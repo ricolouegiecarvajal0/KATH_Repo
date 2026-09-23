@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katrina Laurio | Portfolio</title>
+<meta name="description" content="Portfolio of Katrina Laurio, a BSIT student interested in web development, programming, and useful digital projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #FDE4F2;
+  --blush-deep: #F9CEE7;
+  --sand: #EDE8D0;
+  --white: #FFFFFF;
+  --ink: #2C2C2C;
+  --navy: #28428B;
+  --berry: #E68BBE;
+  --serif: "DM Serif Display", Georgia, serif;
+  --sans: "Nunito", system-ui, sans-serif;
+  --side: 270px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+body {
+  margin: 0;
+  background: var(--blush);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.7;
+}
+
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+.skip { position: absolute; left: -999px; background: var(--navy); color: var(--white); padding: .6rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; top: 1rem; }
+
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.15; margin: 0; }
+h2 { font-size: 2.2rem; color: var(--navy); margin-bottom: 1.5rem; }
+p { margin: 0 0 1rem; }
+
+/* ---------- Layout ---------- */
+.shell {
+  display: grid;
+  grid-template-columns: var(--side) 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.side {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  height: calc(100vh - 3rem);
+  background: var(--sand);
+  border-radius: 28px;
+  padding: 2rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.avatar {
+  width: 200px; height: 200px;
+  border-radius: 30px;
+  object-fit: cover;
+  background: var(--blush-deep);
+  border: 5px solid var(--white);
+  box-shadow: 0 0 0 3px var(--berry);
+}
+.who { font-family: var(--serif); font-size: 1.7rem; margin: 1rem 0 0; line-height: 1.1; }
+.role { margin: .2rem 0 1.5rem; color: #555; font-size: .95rem; }
+
+.side nav { width: 100%; display: flex; flex-direction: column; gap: .25rem; }
+.side nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: .55rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  transition: background .2s;
+}
+.side nav a:hover { background: var(--white); }
+.side nav a.active { background: var(--berry); }
+
+.side-mail {
+  margin-top: auto;
+  color: var(--navy);
+  font-weight: 700;
+  text-underline-offset: 4px;
+}
+
+main {
+  background: var(--white);
+  border-radius: 28px;
+  min-width: 0;
+}
+main section { padding: 4rem 3.5rem; }
+main section + section { border-top: 2px dashed var(--blush-deep); }
+
+/* ---------- Hero ---------- */
+.hero { padding-top: 6rem; padding-bottom: 6rem; }
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); max-width: 14ch; color: var(--navy); }
+.hero p { max-width: 52ch; font-size: 1.1rem; margin-top: 1.25rem; }
+.actions { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+.btn {
+  display: inline-block;
+  background: var(--berry);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  padding: .8rem 1.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--berry);
+  transition: background .2s, border-color .2s;
+}
+.btn:hover { background: var(--blush-deep); border-color: var(--blush-deep); }
+.btn.ghost { background: transparent; border-color: var(--navy); color: var(--navy); }
+.btn.ghost:hover { background: var(--blush); }
+
+/* ---------- About ---------- */
+#about p { max-width: 60ch; }
+
+/* ---------- Skills ---------- */
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.25rem; }
+.skill { background: var(--sand); border-radius: 20px; padding: 1.5rem; }
+.skill h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: .75rem; }
+.skill ul { list-style: none; margin: 0; padding: 0; }
+.skill li { padding: .35rem 0 .35rem 1.3rem; position: relative; }
+.skill li::before { content: ""; position: absolute; left: 0; top: 1.05em; width: 8px; height: 8px; border-radius: 50%; background: var(--berry); }
+
+/* ---------- Projects ---------- */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.75rem; }
+.project { border: 2px solid var(--blush-deep); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+.project img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--blush); display: block; }
+.project .body { padding: 1.4rem; }
+.project h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+.project p { font-size: .95rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; }
+.tags li { background: var(--blush); padding: .15rem .8rem; border-radius: 999px; font-size: .82rem; font-weight: 600; }
+
+/* ---------- Experience ---------- */
+.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; }
+.col { font-size: 1.5rem; margin-bottom: 1.25rem; }
+.entry { border-left: 4px solid var(--berry); padding: .1rem 0 .1rem 1.1rem; margin-bottom: 1.5rem; }
+.entry h4 { font-size: 1.2rem; margin: .1rem 0 .4rem; }
+.entry p { margin: 0; }
+.entry .when { font-size: .85rem; font-weight: 700; color: var(--navy); }
+
+/* ---------- Contact ---------- */
+#contact p { max-width: 46ch; }
+footer { text-align: center; padding: 1.5rem; font-size: .9rem; background: var(--sand); border-radius: 0 0 28px 28px; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; padding: .75rem; gap: .75rem; }
+  .side { position: static; height: auto; border-radius: 22px; padding: 1.25rem; }
+  .avatar { width: 96px; height: 96px; }
+  .side nav { flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 0; }
+  .side-mail { margin-top: 1rem; }
+  main section { padding: 3rem 1.5rem; }
+  .hero { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#home">Skip to content</a>
+
+<div class="shell">
+
+  <aside class="side">
+    <img class="avatar" src="images/profile.jpg" alt="Photo of Katrina Laurio">
+    <p class="who">Katkat</p>
+    <p class="role">BSIT Student</p>
+
+    <nav aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience &amp; Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="side-mail" href="mailto:lauriokatrinamae@gmail.com">Email me</a>
+  </aside>
+
+  <main>
+
+    <section id="home" class="hero">
+      <h1>Hello, I'm Katrina Laurio 'katkat'</h1>
+      <p>I am a BSIT student interested in web development, programming, and creating useful digital projects. I am currently learning Laravel, PHP, HTML, CSS, and JavaScript.</p>
+      <div class="actions">
+        <a class="btn" href="#projects">View my projects</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div>
+        <h2>About me</h2>
+        <p>Hi! I'm Katrina Laurio, a BSIT student who enjoys learning about web development and technology. I am passionate about creating websites, learning new programming skills, and improving my knowledge in information technology.</p>
+        <p>I am always eager to improve my skills and explore new ideas. My goal is to continue learning and build useful and creative projects using technology.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div class="skill">
+          <h3>Web Development</h3>
+          <ul><li>HTML</li><li>CSS</li><li>PHP</li><li>Laravel</li></ul>
+        </div>
+        <div class="skill">
+          <h3>Networking</h3>
+          <ul><li>Cisco Packet Tracer</li><li>IP Addressing</li><li>Basic Network Configuration</li><li>Network Troubleshooting</li></ul>
+        </div>
+        <div class="skill">
+          <h3>QGIS Mapping</h3>
+          <ul><li>QGIS</li><li>Map Visualization</li><li>Basic QGIS Analysis</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>My projects</h2>
+      <div class="project-grid">
+
+        <article class="project">
+          <img src="images/music-playlist.png" alt="Music Playlist webpage with a purple and neon theme showing a grid of four song cards">
+          <div class="body">
+            <h3>Music Playlist Project</h3>
+            <p>The webpage features a modern purple and neon aesthetic that displays a clean grid of four pop songs, including tracks by Taylor Swift and Bruno Mars. Each song card shows the title, artist, genre tag, and a play button. At the bottom of the screen, a pagination menu indicates that this is the first page of three, allowing users to browse through the rest of the collection using "Previous" and "Next" buttons.</p>
+            <ul class="tags"><li>Web Design</li><li>Frontend</li><li>UI Design</li></ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <img src="images/cisco-packet-tracer.png" alt="Cisco Packet Tracer screen showing a small network of connected devices">
+          <div class="body">
+            <h3>Cisco Packet Tracer Project</h3>
+            <p>A computer network project created using Cisco Packet Tracer, focusing on network devices, IP addressing, and connectivity.</p>
+            <ul class="tags"><li>Cisco Packet Tracer</li><li>Networking</li><li>IP Addressing</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience &amp; education</h2>
+      <div class="two-col">
+        <div>
+          <h3 class="col">Experience</h3>
+          <div class="entry">
+            <p class="when">2026 to Present</p>
+            <h4>Web Development Student</h4>
+            <p>Learning Laravel, PHP, HTML, CSS, and basic web development.</p>
+          </div>
+          <div class="entry">
+            <p class="when">2026</p>
+            <h4>Student Projects</h4>
+            <p>Created different school projects using web development technologies.</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="col">Education</h3>
+          <div class="entry">
+            <p class="when">Present</p>
+            <h4>Bachelor of Science in Information Technology</h4>
+            <p>Currently studying Information Technology and developing programming skills.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Want to talk about a project or an opportunity? Send me an email.</p>
+      <a class="btn" href="mailto:lauriokatrinamae@gmail.com">lauriokatrinamae@gmail.com</a>
+    </section>
+
+    <footer>&copy; 2026 Katrina Laurio</footer>
+  </main>
+</div>
+
+<script>
+// Highlight the sidebar link for the section currently in view
+const links = document.querySelectorAll('.side nav a');
+const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(s => s && observer.observe(s));
+</script>
+</body>
+</html>
